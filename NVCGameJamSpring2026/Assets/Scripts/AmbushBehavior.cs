@@ -16,9 +16,18 @@ public class AmbushBehavior : MonoBehaviour
     {
         Move = GetComponent<EnemyMovement>(); //stores reference to movement script
     }
+    private void Update()
+    {
+        transform.LookAt(Player_Reference.transform.position);
+        RaycastHit hit;
+        if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f), transform.forward, out hit, Mathf.Infinity)) {
+            Debug.Log(hit.collider) ;
+        }
+        Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f), transform.forward);
+    }
     IEnumerator stalkState() 
     {
-        Ray ray;
+        
         yield return null; 
     }
     IEnumerator attackState() 
