@@ -5,17 +5,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AmbushBehavior : MonoBehaviour
 {
     [SerializeField]
-    GameObject Player_Reference; //
+    GameObject PLAYER_REFERENCE; //
     [SerializeField]
-    GameObject POVStart;
+    Transform RAY_START;
     EnemyMovement Move; //Reference to the movement script on Ambush
     Vector3 rayStartPoint;
-    RaycastHit[] hitArray = new RaycastHit[4];
-    float[] rayOffsets = {-2, -1, 0, 1, 2};
+    RaycastHit[] hitArray = new RaycastHit[9];
     // Start is called before the first frame update
     void Start()
     {
@@ -23,26 +23,21 @@ public class AmbushBehavior : MonoBehaviour
     }
     private void Update()
     {
-        rayStartPoint = POVStart.transform.position;
-        transform.LookAt(Player_Reference.transform.position);
-        Physics.Raycast(rayStartPoint, new Vector3(transform.forward.x - 3f, transform.forward.y - 6f, transform.forward.z -3f), out hitArray[0], Mathf.Infinity);
-        Physics.Raycast(rayStartPoint, new Vector3(transform.forward.x - 1.5f, transform.forward.y - 6f, transform.forward.z - 3f), out hitArray[2], Mathf.Infinity);
-        Physics.Raycast(rayStartPoint, new Vector3(transform.forward.x + 0, transform.forward.y - 6f, transform.forward.z - 3f), out hitArray[2], Mathf.Infinity);
-        Physics.Raycast(rayStartPoint, new Vector3(transform.forward.x + 1.5f, transform.forward.y - 6f, transform.forward.z - 3f), out hitArray[2], Mathf.Infinity);
-        Physics.Raycast(rayStartPoint, new Vector3(transform.forward.x +3f, transform.forward.y - 6f, transform.forward.z - 3f), out hitArray[2], Mathf.Infinity);
-        Debug.DrawRay(rayStartPoint, new Vector3(transform.forward.x - (transform.position.x - 3f), 0, transform.forward.z - transform.position.z) - rayStartPoint);
-        Debug.DrawRay(rayStartPoint, new Vector3(transform.forward.x - (transform.position.x - 1.5f), 0, transform.forward.z - transform.position.z) - rayStartPoint);
-        Debug.DrawRay(rayStartPoint, new Vector3(transform.forward.x - (transform.position.x + 0f), 0, transform.forward.z - transform.position.z) - rayStartPoint);
-        Debug.DrawRay(rayStartPoint, new Vector3(transform.forward.x - (transform.position.x + 1.5f), 0, transform.forward.z - transform.position.z) - rayStartPoint);
-        Debug.DrawRay(rayStartPoint, new Vector3(transform.forward.x -(transform.position.x + 3f), 0, transform.forward.z - transform.position.z) - rayStartPoint);
-        foreach(RaycastHit hit in hitArray)
+        transform.rotation = Quaternion.LookRotation(new Vector3(PLAYER_REFERENCE.transform.position.x - transform.position.x, 0, PLAYER_REFERENCE.transform.position.z - transform.position.z), transform.up);
+        rayStartPoint  = RAY_START.position;
+        for(int i = 0; i < hitArray.Length; i++)
         {
-            Debug.Log(hit.collider);
+            Physics.Raycast(rayStartPoint, transform.forward + transform.right * (-1f + (0.25f * i)), out hitArray[i], Mathf.Infinity);
+            Debug.DrawRay(rayStartPoint, transform.forward + transform.right * (-1f + (0.25f * i)));
+            if (hitArray[i].collider != null)
+            {
+                Debug.Log("Raycast" + i + "\nHit: " + hitArray[i].collider);
+                Debug.Log("Tag of Object: " + hitArray[i].collider.tag);
+            }
         }
     }
     IEnumerator stalkState() 
     {
-        
         yield return null; 
     }
     IEnumerator attackState() 

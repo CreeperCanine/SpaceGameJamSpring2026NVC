@@ -783,7 +783,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &550737371
 MonoBehaviour:
@@ -811,6 +811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player_Reference: {fileID: 1948190541}
   POVStart: {fileID: 1821981441}
+  offsetx: 2
+  offsetz: 2
 --- !u!136 &550737373
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -893,7 +895,7 @@ Transform:
   m_GameObject: {fileID: 550737368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 9.9, z: 19.41}
+  m_LocalPosition: {x: -3.7, y: 9.9, z: 24.3}
   m_LocalScale: {x: 2.3258, y: 2.3258, z: 2.3258}
   m_ConstrainProportionsScale: 0
   m_Children:
