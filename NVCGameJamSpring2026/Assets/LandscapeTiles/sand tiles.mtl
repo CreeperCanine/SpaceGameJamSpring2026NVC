@@ -1,0 +1,24 @@
+# Blender 5.0.1 MTL File: 'desert.blend'
+# www.blender.org
+
+newmtl DESERT_SAND
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Sand Tile Color.png
+map_Ns Sand Tile roghness.png
+map_refl Sand Tile  METAL.png
+
+newmtl DESERT_SAND.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd sand tile 2 color .png
+map_Ns sand tile 2 riughness.png
+map_refl sand tile 3 metal.png
