@@ -14,7 +14,8 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 20.0f;
+        agent.speed = 20;
+        agent.acceleration = 140;
     }
     public void MoveToPoint(Vector3 point)
     {
@@ -29,6 +30,11 @@ public class EnemyMovement : MonoBehaviour
     public void SetSpeed(float speed)
     {
         agent.speed = speed;
+    }
+
+    public void ceaseVelocity()
+    {
+        agent.velocity = Vector3.zero;
     }
 
 }
