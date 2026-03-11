@@ -812,6 +812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PLAYER_REFERENCE: {fileID: 1948190541}
   RAY_START: {fileID: 1821981442}
+  comparativeMath: 0
+  posOffset: 3
 --- !u!136 &550737373
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1211,7 +1213,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 75b4677698d3d854aa4d66d4399343a3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 328744b440defd240a8b3c5ae4acfb68, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &887041194
 Transform:

@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.speed = 20.0f;
     }
     public void MoveToPoint(Vector3 point)
     {
@@ -23,6 +24,11 @@ public class EnemyMovement : MonoBehaviour
     public void WarpToPoint(Vector3 point)
     {
         agent.Warp(point);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        agent.speed = speed;
     }
 
 }
