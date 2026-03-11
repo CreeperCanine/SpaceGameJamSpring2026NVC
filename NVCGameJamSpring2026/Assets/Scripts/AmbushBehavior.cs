@@ -31,7 +31,7 @@ public class AmbushBehavior : MonoBehaviour
     void Start()
     {
         Move = GetComponent<EnemyMovement>(); //stores reference to movement script
-        StartCoroutine(stateControl());
+        StartCoroutine(stateControl()); //starts coroutine that is responsible for enemy behavior
     }
     private void Update()
     {
@@ -61,20 +61,20 @@ public class AmbushBehavior : MonoBehaviour
                 yield return new WaitForSeconds(2f);//waits 2 seconds before starting next loop
             }
             //Upon exiting the loop, this means the ambush has been either aggroed or flashed, and in both cases this coroutine will come to an end and either attack or flee state will be called
-            if (flashed == true)
+            if (flashed == true) //enters flee state
             {
                 fleeState();
-                yield return new WaitForSeconds(20f);
+                yield return new WaitForSeconds(7.5f); //waits 7.5 seconds
                 flashed = false;//sets flashed to false
                 Move.WarpToPoint(transform.position + new Vector3(-20, 0, -20));//Moves ambusher to set point far away to give the impression that it 'disappeared' to player
                 yield return new WaitForSeconds(5f);//disabled ambusher for however long need be
             }
-            else if (aggro == true)
+            else if (aggro == true) //enters attack state
             {
-                while (flashed == false)
+                while (flashed == false) //remains attacking until flashed
                 {
                     attackState();
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(2f); //waits fo 2 seconds
                 }
             }
         }
@@ -108,15 +108,13 @@ public class AmbushBehavior : MonoBehaviour
     }
     void attackState() 
     {
-        Debug.Log("Entered AttackState");
-            if (Vector3.Distance(transform.position, PLAYER_REFERENCE.transform.position) > 6f)
+            if (Vector3.Distance(transform.position, PLAYER_REFERENCE.transform.position) > 6f) //will continue to set move point until close enough to the player
             {
-                Move.MoveToPoint(PLAYER_REFERENCE.transform.position - new Vector3(-3, 0, -3));
+                Move.MoveToPoint(PLAYER_REFERENCE.transform.position - new Vector3(-3, 0, -3)); //moves ambusher close to player
             }
             else 
             {
-                Move.ceaseVelocity();
-                Attack();
+                Attack(); //attacks player
             }
 
         aggro = false;//upon exiting aggro is set to false as the final action of attackState
@@ -124,7 +122,6 @@ public class AmbushBehavior : MonoBehaviour
     void fleeState() 
     {
         //Values used for code below to be changed as neccesary
-        Debug.Log("Entered FleeState");
         Move.SetSpeed(20f);//Makes ambusher faster so that escape is easier
         Move.MoveToPoint(transform.position - new Vector3(20, 0, 20));//moves ambusher set amount of units away from current position in attempt to get far away from playe
 
