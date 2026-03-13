@@ -22,7 +22,7 @@ public class AmbushBehavior : MonoBehaviour
     Vector3 desiredLocation = new Vector3 (0, 0, 0); //variable that holds the Vector3 that will dictate where ambusher moves
 
     [SerializeField]
-    bool flashed = false; //trigger to enter flee state ____
+    public bool flashed = false; //trigger to enter flee state ____
     [SerializeField]   //                                   \__ serialized for ease of testing
     bool aggro = false; //trigger to enter attack state ____/
     [SerializeField]
