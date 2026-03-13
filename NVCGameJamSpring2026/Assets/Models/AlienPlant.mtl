@@ -1,16 +1,5 @@
-# Blender 5.0.1 MTL File: 'alien flowers.blend'
+# Blender 5.0.1 MTL File: 'None'
 # www.blender.org
-
-newmtl Material.001
-Ka 0.554545 0.554545 0.554545
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 3
-map_Kd flower closed color.png
-map_Ns flower closed roughness.png
-map_refl flower closed metal.png
 
 newmtl Material.002
 Ka 1.000000 1.000000 1.000000
