@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Obstacle
   - Ground
+  - Attack
+  - GameOver
+  - O2Health
   layers:
   - Default
   - TransparentFX
@@ -43,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1539789137
     locked: 0
