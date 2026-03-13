@@ -27,16 +27,8 @@ public class PlayerHealth : MonoBehaviour
         ui = GameObject.FindWithTag("O2Health");
         StartCoroutine(depleteOxygen());
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Attack")
-        {
-            updateHealthBar(10);
-        }
-    }
     
-    private void updateHealthBar(float damage)
+    public void updateHealthBar(float damage)
     {
         currentHealth -= damage;
         healthbar.fillAmount = currentHealth / totalHealth;

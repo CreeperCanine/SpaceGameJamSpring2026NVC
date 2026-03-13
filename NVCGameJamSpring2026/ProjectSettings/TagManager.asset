@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Ground
   - Attack
+  - GameOver
+  - O2Health
   layers:
   - Default
   - TransparentFX
