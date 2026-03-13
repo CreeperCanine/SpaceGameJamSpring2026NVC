@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class DayNightCycle : MonoBehaviour
 {
     
     public Light sun;
