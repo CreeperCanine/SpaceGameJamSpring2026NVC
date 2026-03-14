@@ -639,7 +639,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f6fe6da3639746149a718d2a78fe9b80,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.11
+      value: 5.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6fe6da3639746149a718d2a78fe9b80,
         type: 3}
@@ -722,11 +722,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6fe6da3639746149a718d2a78fe9b80,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 697683701}
+      addedObject: {fileID: 697683702}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f6fe6da3639746149a718d2a78fe9b80,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 697683702}
+      addedObject: {fileID: 697683703}
   m_SourcePrefab: {fileID: 100100000, guid: f6fe6da3639746149a718d2a78fe9b80, type: 3}
 --- !u!1 &257317681
 GameObject:
@@ -1736,18 +1736,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &697683701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697683694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd4bc4145e2f1944b2abfe32b18ca61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &697683702
 Animator:
   serializedVersion: 5
@@ -1769,6 +1757,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &697683703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697683694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd4bc4145e2f1944b2abfe32b18ca61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &710738941 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6762594563747115088, guid: 85fb58bda31bc574fb6df9676f542c04,

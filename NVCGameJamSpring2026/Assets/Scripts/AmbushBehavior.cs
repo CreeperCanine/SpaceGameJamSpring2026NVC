@@ -1,5 +1,9 @@
 /*
  This is the Ambush's AI. All of its behavior can be found here
+  
+----------------------------------------------------------------------------------------------------------------------------
+|PROGRAMMERS NOTE: If the ambusher isn't moving for some reason, try removing and then reattaching the EnemyMovement script|
+----------------------------------------------------------------------------------------------------------------------------
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -66,8 +70,9 @@ public class AmbushBehavior : MonoBehaviour
             if (flashed == true) //enters flee state
             {
                 fleeState();
-                yield return new WaitForSeconds(7.5f); //waits 7.5 seconds
+                yield return new WaitForSeconds(Vector3.Distance(transform.position,transform.position - new Vector3(20, 0, 20))/20f);
                 flashed = false;//sets flashed to false
+                animControl.SetBool("isWalking", false);
                 Move.WarpToPoint(transform.position + new Vector3(-20, 0, -20));//Moves ambusher to set point far away to give the impression that it 'disappeared' to player
                 yield return new WaitForSeconds(5f);//disabled ambusher for however long need be
             }
