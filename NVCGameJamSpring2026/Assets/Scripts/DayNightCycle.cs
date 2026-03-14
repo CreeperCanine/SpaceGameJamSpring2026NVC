@@ -40,7 +40,7 @@ public class DayNightCycle : MonoBehaviour
 
         if (!isDay && wasDay)
         {
-            // Debug.Log("Sunset");
+            Debug.Log("Sunset");
             OnSunset?.Invoke();
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.PlaySound(windHowl);
