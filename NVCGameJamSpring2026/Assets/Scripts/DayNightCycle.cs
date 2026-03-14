@@ -34,6 +34,7 @@ public class DayNightCycle : MonoBehaviour
             Debug.Log("Sunrise");
             OnSunrise?.Invoke();
             AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlaySound(windHowl);
             AudioManager.Instance.PlayMusic(dayAmbience);
         }
 
@@ -42,6 +43,7 @@ public class DayNightCycle : MonoBehaviour
             Debug.Log("Sunset");
             OnSunset?.Invoke();
             AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlaySound(windHowl);
             AudioManager.Instance.PlayMusic(nightAmbience);
         }
 
