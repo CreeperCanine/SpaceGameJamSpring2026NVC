@@ -285,8 +285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 650464795}
-  dayRotationSpeed: 25
-  nightRotationSpeed: 75
+  dayRotationSpeed: 1.7
+  nightRotationSpeed: 31.4
+  daySound: {fileID: 8300000, guid: c33933f2c19a4364e928f8fae3b7bcf9, type: 3}
+  nightSound: {fileID: 8300000, guid: f410085dcd718804794f5936fddb271f, type: 3}
 --- !u!1 &939913203
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,9 +614,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f254c74d71207af429973d49483aafaf, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.353
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -965,28 +967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164716929be9bf1448dc1b664d28c3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectsSource: {fileID: 1803635762}
+  sfxSource: {fileID: 1803635762}
   musicSource: {fileID: 1356344120}
-  soundEffects:
-  - {fileID: 8300000, guid: 31c5868f34705894f93538b4d4677a26, type: 3}
-  - {fileID: 8300000, guid: 1e62ba642c29d664ea92fb20c85a677c, type: 3}
-  - {fileID: 8300000, guid: f4ace5501e6abaa4b8776e34c70611a3, type: 3}
-  - {fileID: 8300000, guid: f1038ec550c5b0c478750f602e51341e, type: 3}
-  - {fileID: 8300000, guid: 0d41f9c00cbbb674e9372239dafa9611, type: 3}
-  - {fileID: 8300000, guid: 0467011b7eae07248b227e29d8c76b2e, type: 3}
-  - {fileID: 8300000, guid: fd734685e260d5d46b0dd09d78acbd76, type: 3}
-  - {fileID: 8300000, guid: 1236dd7730d5a2a47bc491ded061ccb3, type: 3}
-  - {fileID: 8300000, guid: e9b908a321e85864a8349699a68b03c0, type: 3}
-  - {fileID: 8300000, guid: 9ed843786b72183448292615a6da1285, type: 3}
-  - {fileID: 8300000, guid: bb7ff44e2dfc4234a84226cf58507178, type: 3}
-  - {fileID: 8300000, guid: 749aaf590cdff5a47b04a07fccc09709, type: 3}
-  - {fileID: 8300000, guid: 6402f8d21b00cbb4d8b55f346680c04b, type: 3}
-  - {fileID: 8300000, guid: 12895173694ce2044a4cb2d75a7065f2, type: 3}
-  - {fileID: 8300000, guid: 9bc4f9e81d347624b9e5295c4934a526, type: 3}
-  - {fileID: 8300000, guid: 068a179871f8837428b3dab7dfb8c3c5, type: 3}
-  - {fileID: 8300000, guid: 1619290b371eff74c99bd724456385ad, type: 3}
-  - {fileID: 8300000, guid: eb17ae6c2d1a6ad4aafe1d54daff9e85, type: 3}
-  - {fileID: 8300000, guid: f254c74d71207af429973d49483aafaf, type: 3}
 --- !u!4 &2008555569
 Transform:
   m_ObjectHideFlags: 0
