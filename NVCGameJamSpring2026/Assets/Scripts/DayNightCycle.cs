@@ -13,10 +13,6 @@ public class DayNightCycle : MonoBehaviour
 
     private bool wasDay;
 
-    public AudioClip dayAmbience;
-    public AudioClip nightAmbience;
-    public AudioClip windHowl;
-
     void Start()
     {
         wasDay = sun.transform.forward.y < 0;
@@ -33,18 +29,12 @@ public class DayNightCycle : MonoBehaviour
         {
             Debug.Log("Sunrise");
             OnSunrise?.Invoke();
-            AudioManager.Instance.StopMusic();
-            AudioManager.Instance.PlaySound(windHowl);
-            AudioManager.Instance.PlayMusic(dayAmbience);
         }
 
         if (!isDay && wasDay)
         {
             Debug.Log("Sunset");
             OnSunset?.Invoke();
-            AudioManager.Instance.StopMusic();
-            AudioManager.Instance.PlaySound(windHowl);
-            AudioManager.Instance.PlayMusic(nightAmbience);
         }
 
         wasDay = isDay;
