@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,34 +11,73 @@ public class PlayerHealth : MonoBehaviour
     public float totalHealth;
     private float currentOxygen;
     public float totalOxygen;
-
-    public GameObject theoryBar; // The way I understand it we are dealing with a 2D ui element here
-    public GameObject theoryBar2;
+    public float currentHealth;
+    public GameObject[] oxyBar = new GameObject[6];
+    public Image healthbar;
+    GameObject gameOver;
+    FirstPersonController controller;
+    GameObject ui;
     private void Start()
     {
         currentOxygen = totalOxygen;
+        currentHealth = totalHealth;
+        controller = GetComponent<FirstPersonController>();
+        gameOver = GameObject.FindWithTag("GameOver");
+        gameOver.SetActive(false);
+        ui = GameObject.FindWithTag("O2Health");
         StartCoroutine(depleteOxygen());
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Attack")
-        {
-            totalHealth -= 10;
-            updateHealthBar();
-        }
-    }
     
-    private void updateHealthBar()
+    public void updateHealthBar(float damage)
     {
-        float valueToChange = totalHealth/100;
-        theoryBar.transform.localScale = new Vector3(0, valueToChange, 0);
+        currentHealth -= damage;
+        healthbar.fillAmount = currentHealth / totalHealth;
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
     }
 
     private void updateOxyBar()
     {
-        float valueToChange = totalHealth / 100;
-        theoryBar.transform.localScale = new Vector3(0, valueToChange, 0);
+        if ((currentOxygen / totalOxygen) >= .81) 
+        {
+            oxyBar[5].SetActive(true);
+        }
+        else if((currentOxygen / totalOxygen) >= .61)
+        {
+            oxyBar[5].SetActive(false);
+            oxyBar[4].SetActive(true);
+        }
+        else if ((currentOxygen / totalOxygen) >= .41)
+        {
+            oxyBar[4].SetActive(false);
+            oxyBar[3].SetActive(true);
+        }
+        else if ((currentOxygen / totalOxygen) >= .21)
+        {
+            oxyBar[3].SetActive(false);
+            oxyBar[2].SetActive(true);
+        }
+        else if ((currentOxygen / totalOxygen) >= .1)
+        {
+            oxyBar[2].SetActive(false);
+            oxyBar[1].SetActive(true);
+        }
+        else if ((currentOxygen / totalOxygen) <= 0)
+        {
+            oxyBar[1].SetActive(false);
+            oxyBar[0].SetActive(true);
+        }
+    }
+
+    void Die()
+    {
+        controller.enabled = false;
+        ui.SetActive(false);
+        ui = null;
+        gameOver.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator depleteOxygen()
@@ -52,13 +93,11 @@ public class PlayerHealth : MonoBehaviour
 
         while(currentOxygen <= 0)
         {
-            totalHealth -= 5;
-            Debug.Log(totalHealth);
+            updateHealthBar(5);
             yield return new WaitForSeconds(1.5f);
-            updateHealthBar();
+            
         }
         Debug.Log("Out of health");
         
     }
-
 }

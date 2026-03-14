@@ -20,6 +20,7 @@ public class AmbushBehavior : MonoBehaviour
     List<Transform> ObstacleList = new List<Transform>(); //array that holds observed obstacles
     Transform toMove; //variable that holds transform of given object tagged 'Obstacle'
     Vector3 desiredLocation = new Vector3 (0, 0, 0); //variable that holds the Vector3 that will dictate where ambusher moves
+    public Collider attackTrig;
 
     [SerializeField]
     public bool flashed = false; //trigger to enter flee state ____
@@ -44,13 +45,6 @@ public class AmbushBehavior : MonoBehaviour
         }
         rayStartPoint = RAY_START.position; //constantly getting RAY_START position
     }
-    void Attack()
-    {
-        Debug.Log("Has attacked");
-        //Attack animation
-        //Flash the attack hitbox
-        //deal damage to player
-    }
     IEnumerator stateControl() 
     {
         while (true)
@@ -73,9 +67,19 @@ public class AmbushBehavior : MonoBehaviour
             {
                 while (flashed == false) //remains attacking until flashed
                 {
-                    attackState();
-                    yield return new WaitForSeconds(2f); //waits fo 2 seconds
+                    if (Vector3.Distance(transform.position, PLAYER_REFERENCE.transform.position) > 6f) //will continue to set move point until close enough to the player
+                    {
+                        Move.MoveToPoint(PLAYER_REFERENCE.transform.position - new Vector3(-3, 0, -3)); //moves ambusher close to player
+                    }
+                    else
+                    {
+                        attackTrig.enabled = true;//attacks player
+                        yield return new WaitForSeconds(.5f);
+                        attackTrig.enabled = false;
+                    }
+                    yield return new WaitForSeconds(.5f); //waits fo 2 seconds
                 }
+                aggro = false;
             }
         }
     }
@@ -106,19 +110,7 @@ public class AmbushBehavior : MonoBehaviour
             }
             ObstacleList.Clear(); //clears list to free Memory
     }
-    void attackState() 
-    {
-            if (Vector3.Distance(transform.position, PLAYER_REFERENCE.transform.position) > 6f) //will continue to set move point until close enough to the player
-            {
-                Move.MoveToPoint(PLAYER_REFERENCE.transform.position - new Vector3(-3, 0, -3)); //moves ambusher close to player
-            }
-            else 
-            {
-                Attack(); //attacks player
-            }
 
-        aggro = false;//upon exiting aggro is set to false as the final action of attackState
-    }
     void fleeState() 
     {
         //Values used for code below to be changed as neccesary
