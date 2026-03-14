@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3494696338942673899}
-  - component: {fileID: 5198570117716746495}
+  - component: {fileID: -6749511010466998733}
   m_Layer: 0
   m_Name: Blue Plant
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4039610115509482163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5198570117716746495
+--- !u!114 &-6749511010466998733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
