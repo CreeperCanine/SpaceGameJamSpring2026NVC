@@ -341,11 +341,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You''ve narrowly escaped the wrath of a lethal alien...
-
-
-
-    Congratulations!'
+  m_text: "You've narrowly escaped the wrath of a lethal alien...\n\n\nYou watch
+    as Goddard's Rocket launches into the sky ahead of you, seemingly beckoning you
+    towards home.\n\n\nWith enough fuel berries gathered, your rocket manages to
+    lift off into space, the stars watching as you speed away from the hellscape
+    beneath. \n\n\nCongratulations!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7a4a7683adc42498d5f9a2aa58b6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoad: 7
+  delayBeforeLoad: 25
   sceneToLoadName: Credit
 --- !u!4 &481325989
 Transform:
@@ -853,7 +853,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8d2e70fc8973d4b4a958b171a4d57031, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 64739b0c51ffd55498b1593e964675fb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2946fca66537044fa131459c8797865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 400
+  scrollSpeed: 150
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
