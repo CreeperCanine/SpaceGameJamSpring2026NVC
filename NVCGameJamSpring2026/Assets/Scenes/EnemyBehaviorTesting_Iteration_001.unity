@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 670098500}
   - component: {fileID: 670098499}
   - component: {fileID: 670098502}
+  - component: {fileID: 670098503}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1145,6 +1146,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &670098503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670098498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 2c3e6b97cad5dab4ba716c3129049f86, type: 2}
 --- !u!1 &692888215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1449,12 @@ MonoBehaviour:
 --- !u!1 &1154656425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6276743785096519987, guid: 85fb58bda31bc574fb6df9676f542c04,
+    type: 3}
+  m_PrefabInstance: {fileID: 817071022767302250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1230970147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4789377788357423316, guid: 85fb58bda31bc574fb6df9676f542c04,
     type: 3}
   m_PrefabInstance: {fileID: 817071022767302250}
   m_PrefabAsset: {fileID: 0}
@@ -1872,7 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 100
-  totalOxygen: 900
+  totalOxygen: 1
   currentHealth: 0
   oxyBar:
   - {fileID: 2100258163}
@@ -1882,6 +1906,9 @@ MonoBehaviour:
   - {fileID: 1763900464}
   - {fileID: 357014826}
   healthbar: {fileID: 710738941}
+  ui: {fileID: 1230970147}
+  cam: {fileID: 670098500}
+  vol: {fileID: 670098503}
 --- !u!143 &1948190553
 CharacterController:
   m_ObjectHideFlags: 0

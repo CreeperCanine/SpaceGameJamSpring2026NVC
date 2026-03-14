@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -16,7 +19,11 @@ public class PlayerHealth : MonoBehaviour
     public Image healthbar;
     GameObject gameOver;
     FirstPersonController controller;
-    GameObject ui;
+    public GameObject ui;
+    public Camera cam;
+    float vignetteInt = 0.3f;
+    public Volume vol;
+    Vignette v;
     private void Start()
     {
         currentOxygen = totalOxygen;
@@ -24,7 +31,12 @@ public class PlayerHealth : MonoBehaviour
         controller = GetComponent<FirstPersonController>();
         gameOver = GameObject.FindWithTag("GameOver");
         gameOver.SetActive(false);
-        ui = GameObject.FindWithTag("O2Health");
+        //ui = GameObject.FindWithTag("O2Health");
+        if(vol.profile.TryGet(out Vignette vignette))
+        {
+            Debug.Log("GotThatShit");
+            v = vignette;
+        }
         StartCoroutine(depleteOxygen());
     }
     
@@ -32,7 +44,8 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.fillAmount = currentHealth / totalHealth;
-        if(currentHealth <= 0)
+        v.intensity.value = vignetteInt + ((1 - (currentHealth/totalHealth))/5);
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -75,9 +88,9 @@ public class PlayerHealth : MonoBehaviour
     {
         controller.enabled = false;
         ui.SetActive(false);
-        ui = null;
         gameOver.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     IEnumerator depleteOxygen()
