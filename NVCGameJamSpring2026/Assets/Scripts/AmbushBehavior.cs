@@ -23,7 +23,7 @@ public class AmbushBehavior : MonoBehaviour
     public Collider attackTrig;
 
     [SerializeField]
-    bool flashed = false; //trigger to enter flee state ____
+    public bool flashed = false; //trigger to enter flee state ____
     [SerializeField]   //                                   \__ serialized for ease of testing
     bool aggro = false; //trigger to enter attack state ____/
     [SerializeField]
