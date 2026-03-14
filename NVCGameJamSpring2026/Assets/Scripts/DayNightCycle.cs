@@ -12,6 +12,7 @@ public class DayNightCycle : MonoBehaviour
     public static event Action OnSunset;
 
     private bool wasDay;
+    public AudioClip keyboard;
 
     void Start()
     {
@@ -29,12 +30,14 @@ public class DayNightCycle : MonoBehaviour
         {
             Debug.Log("Sunrise");
             OnSunrise?.Invoke();
+            AudioManager.Instance.PlaySound(keyboard);
         }
 
         if (!isDay && wasDay)
         {
             Debug.Log("Sunset");
             OnSunset?.Invoke();
+            AudioManager.Instance.PlaySound(keyboard);
         }
 
         wasDay = isDay;
