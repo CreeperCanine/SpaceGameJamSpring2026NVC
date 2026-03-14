@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 8aa34ef6ef64a0543a1dbc8fd00938a1
+guid: 0721edac7c1d0d34bb1d1e8fe25082af
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -36,8 +36,8 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       internalID: 1827226128182048838
-      firstFrame: 36
-      lastFrame: 62
+      firstFrame: 0
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

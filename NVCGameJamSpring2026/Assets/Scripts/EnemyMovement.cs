@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     NavMeshAgent agent; //reference to the gameobject's 
     private void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = 20;
         agent.acceleration = 140;
     }
