@@ -32,9 +32,18 @@ public class RaycastGun : MonoBehaviour
             if (Physics.Raycast(rayOrigin, playerCamera.transform.forward, out hit, gunRange))
             {
                 laserLine.SetPosition(1, hit.point);
-                enemy = GameObject.FindWithTag("Enemy");
+                if (hit.collider.tag == "Enemy")
+                {
+                    hit.collider.gameObject.GetComponent<AmbushBehavior>().flashed = true; //this if statement is going to check to see if it hits the enemy and then flash it
+                }
+
+                //enemy = GameObject.FindWithTag("Enemy"); just gonna run code on enemy no matter what it actually hits
+                //Making adjustments to code
+                
+                /*
                 AmbushBehavior flashEm = enemy.GetComponent<AmbushBehavior>();
                 flashEm.flashed = true;
+                */
             }
             else
             {

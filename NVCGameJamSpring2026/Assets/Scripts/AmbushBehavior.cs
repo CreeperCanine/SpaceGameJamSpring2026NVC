@@ -21,6 +21,8 @@ public class AmbushBehavior : MonoBehaviour
     Transform toMove; //variable that holds transform of given object tagged 'Obstacle'
     Vector3 desiredLocation = new Vector3 (0, 0, 0); //variable that holds the Vector3 that will dictate where ambusher moves
     public Collider attackTrig;
+    Animator animControl;
+    Vector3 prevLoc = new Vector3(0, 0, 0);
 
     [SerializeField]
     public bool flashed = false; //trigger to enter flee state ____
@@ -32,6 +34,8 @@ public class AmbushBehavior : MonoBehaviour
     void Start()
     {
         Move = GetComponent<EnemyMovement>(); //stores reference to movement script
+        animControl = GetComponent<Animator>();
+        prevLoc = transform.position;
         StartCoroutine(stateControl()); //starts coroutine that is responsible for enemy behavior
     }
     private void Update()
@@ -44,15 +48,19 @@ public class AmbushBehavior : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(new Vector3(PLAYER_REFERENCE.transform.position.x + transform.position.x, 0, PLAYER_REFERENCE.transform.position.z + transform.position.z), transform.up); //looks away from the player when flashed
         }
         rayStartPoint = RAY_START.position; //constantly getting RAY_START position
+
     }
     IEnumerator stateControl() 
     {
+        Debug.Log("Running!");
         while (true)
         {
             while (flashed == false && aggro == false) //initiates "stalking" pattern
             {
                 stalkState();
-                yield return new WaitForSeconds(2f);//waits 2 seconds before starting next loop
+                yield return new WaitForSeconds(Vector3.Distance(transform.position, desiredLocation)/20f);//waits 2 seconds before starting next loop
+                animControl.SetBool("isWalking", false);
+                yield return new WaitForSeconds(.5f);
             }
             //Upon exiting the loop, this means the ambush has been either aggroed or flashed, and in both cases this coroutine will come to an end and either attack or flee state will be called
             if (flashed == true) //enters flee state
@@ -70,11 +78,15 @@ public class AmbushBehavior : MonoBehaviour
                     if (Vector3.Distance(transform.position, PLAYER_REFERENCE.transform.position) > 6f) //will continue to set move point until close enough to the player
                     {
                         Move.MoveToPoint(PLAYER_REFERENCE.transform.position - new Vector3(-3, 0, -3)); //moves ambusher close to player
+                        animControl.SetBool("isWalking", true);
                     }
                     else
                     {
+                        animControl.SetBool("isWalking", false);
+                        animControl.SetTrigger("AttackAnimTrigger");
+                        yield return new WaitForSeconds(1.75f);
                         attackTrig.enabled = true;//attacks player
-                        yield return new WaitForSeconds(.5f);
+                        yield return new WaitForSeconds(.75f);
                         attackTrig.enabled = false;
                     }
                     yield return new WaitForSeconds(.5f); //waits fo 2 seconds
@@ -85,7 +97,7 @@ public class AmbushBehavior : MonoBehaviour
     }
     void stalkState()
     {
-        for (int i = 0; i < hitArray.Length; i++) //This for loop sends each RaycastHit inside the Array in the Physics.Raycast function, and for each obstacle it hits, saves it to the Obstacle List
+            for (int i = 0; i < hitArray.Length; i++) //This for loop sends each RaycastHit inside the Array in the Physics.Raycast function, and for each obstacle it hits, saves it to the Obstacle List
             {                                         
                 Physics.Raycast(rayStartPoint, transform.forward + transform.right * (-1f + (0.25f * i)), out hitArray[i], Mathf.Infinity); //Sends out Ray
                 if (hitArray[i].collider != null && hitArray[i].collider.tag == "Obstacle")
@@ -106,7 +118,15 @@ public class AmbushBehavior : MonoBehaviour
                 desiredLocation.x = PLAYER_REFERENCE.transform.position.x < toMove.position.x ? toMove.position.x + posOffset : toMove.position.x - posOffset; //will set desiredLocation.x to a value that will place enemy on the opposite Quadrant of object.x
                 desiredLocation.z = PLAYER_REFERENCE.transform.position.z < toMove.position.z ? toMove.position.z + posOffset : toMove.position.z - posOffset;//will set desiredLocation.z to a value that will place enemy on the opposite Quadrant of object.z
                 desiredLocation.y = toMove.position.y; //i don't think this is neccessary but it works with this here so I'm not touching it
-                Move.MoveToPoint(desiredLocation); //Moves enemy to Vector3 desiredLocation
+                Debug.Log(desiredLocation - prevLoc);
+                if(desiredLocation != prevLoc)
+                {
+                
+                        Move.MoveToPoint(desiredLocation); //Moves enemy to Vector3 desiredLocation
+                        animControl.SetBool("isWalking", true);
+                }
+                prevLoc = desiredLocation;
+
             }
             ObstacleList.Clear(); //clears list to free Memory
     }
@@ -116,7 +136,7 @@ public class AmbushBehavior : MonoBehaviour
         //Values used for code below to be changed as neccesary
         Move.SetSpeed(20f);//Makes ambusher faster so that escape is easier
         Move.MoveToPoint(transform.position - new Vector3(20, 0, 20));//moves ambusher set amount of units away from current position in attempt to get far away from playe
-
+        animControl.SetBool("isWalking", true);
     }
 
     private void OnTriggerEnter(Collider other)
