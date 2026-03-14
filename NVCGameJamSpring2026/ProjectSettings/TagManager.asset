@@ -10,9 +10,6 @@ TagManager:
   - Attack
   - GameOver
   - O2Health
-  - ShipPart
-  - Berry
-  - Collectable
   layers:
   - Default
   - TransparentFX
