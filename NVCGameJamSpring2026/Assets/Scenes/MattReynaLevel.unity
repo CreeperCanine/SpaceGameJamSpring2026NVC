@@ -285,10 +285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 650464795}
-  dayRotationSpeed: 1.7
-  nightRotationSpeed: 31.4
-  daySound: {fileID: 8300000, guid: c33933f2c19a4364e928f8fae3b7bcf9, type: 3}
-  nightSound: {fileID: 8300000, guid: f410085dcd718804794f5936fddb271f, type: 3}
+  dayRotationSpeed: 25
+  nightRotationSpeed: 1
+  dayAmbience: {fileID: 8300000, guid: c33933f2c19a4364e928f8fae3b7bcf9, type: 3}
+  nightAmbience: {fileID: 8300000, guid: f410085dcd718804794f5936fddb271f, type: 3}
+  windHowl: {fileID: 0}
 --- !u!1 &939913203
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,9 +615,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c33933f2c19a4364e928f8fae3b7bcf9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.353
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
