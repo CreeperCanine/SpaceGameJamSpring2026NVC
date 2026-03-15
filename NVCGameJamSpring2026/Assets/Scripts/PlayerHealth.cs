@@ -85,7 +85,6 @@ public class PlayerHealth : MonoBehaviour
         while (currentOxygen > 0)
         {
             currentOxygen -= 1;
-            Debug.Log(currentOxygen/totalOxygen);
             updateOxyBar();
             yield return new WaitForSeconds(1f);
         }

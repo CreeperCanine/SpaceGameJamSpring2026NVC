@@ -21,7 +21,7 @@ public class AmbushBehavior : MonoBehaviour
     EnemyMovement Move; //Reference to the movement script on Ambush
     Vector3 rayStartPoint; //felt easier to put rayStartPoint as opposed to RAY_START.position everytime so I adde it here
     RaycastHit[] hitArray = new RaycastHit[9]; //array to hold the ambusher's 'eyes', felt more efficient than having 9 separate variables
-    List<Transform> ObstacleList = new List<Transform>(); //array that holds observed obstacles
+    public List<Transform> ObstacleList = new List<Transform>(); //array that holds observed obstacles
     Transform toMove; //variable that holds transform of given object tagged 'Obstacle'
     Vector3 desiredLocation = new Vector3 (0, 0, 0); //variable that holds the Vector3 that will dictate where ambusher moves
     public Collider attackTrig;
@@ -102,19 +102,20 @@ public class AmbushBehavior : MonoBehaviour
     }
     void stalkState()
     {
-            for (int i = 0; i < hitArray.Length; i++) //This for loop sends each RaycastHit inside the Array in the Physics.Raycast function, and for each obstacle it hits, saves it to the Obstacle List
+            /*for (int i = 0; i < hitArray.Length; i++) //This for loop sends each RaycastHit inside the Array in the Physics.Raycast function, and for each obstacle it hits, saves it to the Obstacle List
             {                                         
                 Physics.Raycast(rayStartPoint, transform.forward + transform.right * (-1f + (0.25f * i)), out hitArray[i], Mathf.Infinity); //Sends out Ray
                 if (hitArray[i].collider != null && hitArray[i].collider.tag == "Obstacle")
                 {
                     ObstacleList.Add(hitArray[i].collider.transform); //Adds object to List if it is tagged 'Obstacle'
                 }
-            }
+            }*/
             foreach (Transform t in ObstacleList) //Gets the position of each object in the List, decides which is closest to the player
             {
                 if (toMove != null && Vector3.Distance(t.position, PLAYER_REFERENCE.transform.position) < Vector3.Distance(toMove.position, PLAYER_REFERENCE.transform.position) || toMove == null) //checks distance of object to player
                 {
                     toMove = t;
+                    Debug.Log(t);
                 }
             } //the result is toMove is equal to the object closest to the player
 
@@ -133,7 +134,6 @@ public class AmbushBehavior : MonoBehaviour
                 prevLoc = desiredLocation;
 
             }
-            ObstacleList.Clear(); //clears list to free Memory
     }
 
     void fleeState() 
