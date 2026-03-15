@@ -29,7 +29,7 @@ public class AmbushBehavior : MonoBehaviour
     Vector3 prevLoc = new Vector3(0, 0, 0);
 
     [SerializeField]
-    bool flashed = false; //trigger to enter flee state ____
+    public bool flashed = false; //trigger to enter flee state ____
     [SerializeField]   //                                   \__ serialized for ease of testing
     bool aggro = false; //trigger to enter attack state ____/
     [SerializeField]
