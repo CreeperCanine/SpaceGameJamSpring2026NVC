@@ -1,0 +1,12 @@
+# Blender 5.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl Desert_Rock_2.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/ruoni/OneDrive/Documents/GitHub/SpaceGameJamSpring2026NVC/NVCGameJamSpring2026/Assets/Models/sand rock 1 color .png
+map_Ns C:/Users/ruoni/OneDrive/Documents/GitHub/SpaceGameJamSpring2026NVC/NVCGameJamSpring2026/Assets/Models/sand rock 2 roughness.png
