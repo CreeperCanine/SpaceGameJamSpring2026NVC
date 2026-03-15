@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3494696338942673899}
-  - component: {fileID: 5198570117716746495}
+  - component: {fileID: 666907760357110709}
+  - component: {fileID: -6749511010466998733}
   m_Layer: 0
   m_Name: Blue Plant
-  m_TagString: Untagged
+  m_TagString: Berry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +34,28 @@ Transform:
   - {fileID: 4039610115509482163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5198570117716746495
+--- !u!65 &666907760357110709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266166007170144593}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.51, y: 6.1, z: 3.48}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6749511010466998733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +129,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 4874126678125670354, guid: dcee32ac7b5afa949a93b7400936aa3b, type: 3}
-  - {fileID: 2100000, guid: c8d494e148edfc14d82bbf33fc59a64e, type: 2}
+  - {fileID: 2100000, guid: 60b1135f2eb3d5e4498cd5aadbfa5cf8, type: 2}
   - {fileID: 2100000, guid: 5eab10b5a5a703845bef430755c4f654, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
