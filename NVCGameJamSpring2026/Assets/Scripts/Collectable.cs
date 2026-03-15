@@ -11,6 +11,10 @@ public class Collectable : MonoBehaviour, IInteractable
         player = GameObject.FindWithTag("Player"); // Set the Player gameObject tag in the hierarchy to "Player" to get this to work.
         PlayerInventory inventory = player.GetComponent<PlayerInventory>();
         if(tag == "Berry" && inventory.NumberOfBerry != inventory.maxBerry) { inventory.berryPickedUp(); gameObject.SetActive(false); }
-        else { inventory.pickUpCollectable(); gameObject.SetActive(false); }
+        else 
+            { 
+            inventory.pickUpCollectable(); 
+            gameObject.SetActive(false);
+            }
     }
 }
