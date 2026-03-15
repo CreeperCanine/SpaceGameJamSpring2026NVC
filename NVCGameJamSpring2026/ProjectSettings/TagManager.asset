@@ -10,6 +10,8 @@ TagManager:
   - Attack
   - GameOver
   - O2Health
+  - Key
+  - Berry
   layers:
   - Default
   - TransparentFX
