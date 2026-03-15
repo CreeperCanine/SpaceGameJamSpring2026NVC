@@ -27,5 +27,6 @@ public class PlayerInventory : MonoBehaviour
     public void pickUpCollectable() //tbh i'm not sure if collectable is a general term of if theres some other interactable in the game but the option to pick one up is here in case we need it
     {
         NumberOfCollectables++;
+        collectableText.text = $"Collectables\n{NumberOfCollectables}/{maxCollectables}";
     }
 }
