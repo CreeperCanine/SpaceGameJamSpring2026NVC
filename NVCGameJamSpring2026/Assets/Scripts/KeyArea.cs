@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 
 public class KeyArea : MonoBehaviour
@@ -25,13 +27,12 @@ public class KeyArea : MonoBehaviour
         {
             if (inventory.NumberOfCollectables <= 6)
             {
-                // Script for good ending
+                SceneManager.LoadScene("2");
             }
         else
             {
-                // Script for bad ending
+                SceneManager.LoadScene("2");
             }   
         }
-        
     }
 }
